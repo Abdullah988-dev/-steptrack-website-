@@ -1,0 +1,711 @@
+@import "tailwindcss";
+
+/* =========================================================
+   STEPTRACK — GLOBAL DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --cyan: #06b6d4;
+
+  --navy: #0f172a;
+  --navy-light: #172554;
+
+  --muted: #64748b;
+  --muted-light: #94a3b8;
+
+  --card: #ffffff;
+  --border: #e2e8f0;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+
+  --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 35px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 25px 70px rgba(15, 23, 42, 0.14);
+
+  --container: 1180px;
+}
+
+/* =========================================================
+   TAILWIND THEME
+   ========================================================= */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+
+  --color-cyan: var(--cyan);
+
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(37, 99, 235, 0.07),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(6, 182, 212, 0.06),
+      transparent 25%
+    ),
+    var(--background);
+
+  color: var(--foreground);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   IMAGES
+   ========================================================= */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(37, 99, 235, 0.18);
+  color: var(--navy);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.steptrack-container {
+  width: min(100% - 32px, var(--container));
+  margin-inline: auto;
+}
+
+/* =========================================================
+   SECTION SPACING
+   ========================================================= */
+
+.steptrack-section {
+  position: relative;
+  padding-block: clamp(72px, 9vw, 130px);
+}
+
+/* =========================================================
+   BACKGROUND GLOW
+   ========================================================= */
+
+.steptrack-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+
+  border-radius: 999px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.12),
+      transparent 70%
+    );
+
+  filter: blur(10px);
+
+  pointer-events: none;
+
+  animation: glowPulse 6s ease-in-out infinite;
+}
+
+.steptrack-glow-cyan {
+  background:
+    radial-gradient(
+      circle,
+      rgba(6, 182, 212, 0.11),
+      transparent 70%
+    );
+}
+
+/* =========================================================
+   GRADIENT TEXT
+   ========================================================= */
+
+.steptrack-gradient-text {
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb 0%,
+      #0891b2 50%,
+      #2563eb 100%
+    );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation: gradientMove 5s linear infinite;
+}
+
+/* =========================================================
+   GLASS EFFECT
+   ========================================================= */
+
+.steptrack-glass {
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow:
+    0 10px 40px rgba(15, 23, 42, 0.07);
+}
+
+/* =========================================================
+   PREMIUM CARD
+   ========================================================= */
+
+.steptrack-card {
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+.steptrack-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(37, 99, 235, 0.2);
+
+  box-shadow:
+    0 22px 55px rgba(15, 23, 42, 0.12);
+}
+
+/* =========================================================
+   PREMIUM BUTTON
+   ========================================================= */
+
+.steptrack-button {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 48px;
+
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color: white;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.25);
+
+  overflow: hidden;
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.steptrack-button::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      110deg,
+      transparent 25%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 75%
+    );
+
+  transform: translateX(-120%);
+
+  transition: transform 600ms ease;
+}
+
+.steptrack-button:hover {
+  transform: translateY(-3px) scale(1.02);
+
+  box-shadow:
+    0 16px 35px rgba(37, 99, 235, 0.32);
+}
+
+.steptrack-button:hover::before {
+  transform: translateX(120%);
+}
+
+.steptrack-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* =========================================================
+   FLOATING PHONE / MOCKUP
+   ========================================================= */
+
+.steptrack-phone-float {
+  animation:
+    phoneFloat 5s ease-in-out infinite,
+    phoneAppear 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.steptrack-phone-shadow {
+  filter:
+    drop-shadow(
+      0 30px 45px rgba(15, 23, 42, 0.2)
+    );
+}
+
+/* =========================================================
+   FLOATING ELEMENT
+   ========================================================= */
+
+.steptrack-floating {
+  animation: floating 4s ease-in-out infinite;
+}
+
+.steptrack-floating-delay {
+  animation-delay: 1.2s;
+}
+
+/* =========================================================
+   SHINE EFFECT
+   ========================================================= */
+
+.steptrack-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.steptrack-shine::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 70%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  animation: shine 4.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   ANIMATION UTILITIES
+   ========================================================= */
+
+.animate-fade-up {
+  animation:
+    fadeUp 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation:
+    fadeIn 700ms ease both;
+}
+
+.animate-scale-in {
+  animation:
+    scaleIn 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-left {
+  animation:
+    slideLeft 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-slide-right {
+  animation:
+    slideRight 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* =========================================================
+   ANIMATION DELAYS
+   ========================================================= */
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-45px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes phoneFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(0.5deg);
+  }
+}
+
+@keyframes phoneAppear {
+  from {
+    opacity: 0;
+    transform: translateY(45px) scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes floating {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes shine {
+  0%,
+  65% {
+    left: -120%;
+  }
+
+  85%,
+  100% {
+    left: 140%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .steptrack-container {
+    width: min(100% - 40px, 900px);
+  }
+
+  .steptrack-section {
+    padding-block: 90px;
+  }
+
+  .steptrack-glow {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .steptrack-container {
+    width: calc(100% - 28px);
+    max-width: 100%;
+  }
+
+  .steptrack-section {
+    padding-block: 65px;
+  }
+
+  .steptrack-glow {
+    width: 230px;
+    height: 230px;
+
+    filter: blur(5px);
+  }
+
+  .steptrack-card {
+    border-radius: 20px;
+  }
+
+  .steptrack-button {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .steptrack-phone-float {
+    animation-duration: 5.5s;
+  }
+
+  .steptrack-phone-shadow {
+    filter:
+      drop-shadow(
+        0 22px 32px rgba(15, 23, 42, 0.18)
+      );
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .steptrack-container {
+    width: calc(100% - 22px);
+  }
+
+  .steptrack-section {
+    padding-block: 55px;
+  }
+
+  .steptrack-button {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
